@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -9,6 +10,12 @@ const Dashboard = () => {
   };
 
   // hook for navigation
+
+  const goToBilling = () => {
+    navigate('/billing'); // ✅ This will route to BillingPage
+  };
+
+
 
 
   return (
@@ -27,7 +34,14 @@ const Dashboard = () => {
 
           <li>💊 Pharmacy</li>
           <li>🧪 Lab Reports</li>
-          <li>💵 Billing</li>
+          <li
+            style={styles.clickable}
+            onClick={goToBilling}
+            title="Go to Billing Page"
+          >
+            💵 Billing
+          </li>
+
         </ul>
       </div>
     </div>
@@ -66,10 +80,12 @@ const styles = {
     color: '#333',
   },
 
+ 
+
    clickable: {
     cursor: 'pointer',
     color: '#3498db',
-
+    fontWeight: 'bold',
     textDecoration: 'underline',
   },
 
