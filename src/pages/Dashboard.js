@@ -8,6 +8,9 @@ const Dashboard = () => {
     navigate('/patients');
   };
 
+  // hook for navigation
+
+
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>Welcome to the Hospital Dashboard</h2>
@@ -15,8 +18,13 @@ const Dashboard = () => {
 
       <div style={styles.card}>
         <ul style={styles.list}>
+
           <li onClick={handlePatientsClick} style={styles.linkItem}>🧑‍⚕️ Patients</li>
-          <li>📅 Appointments</li>
+
+       
+          <li style={styles.clickable} 
+            onClick={() => navigate('/appointments')}> 📅 Appointments</li>
+
           <li>💊 Pharmacy</li>
           <li>🧪 Lab Reports</li>
           <li>💵 Billing</li>
@@ -57,12 +65,18 @@ const styles = {
     lineHeight: '2',
     color: '#333',
   },
-  linkItem: {
+
+   clickable: {
     cursor: 'pointer',
-    color: '#007BFF',
+    color: '#3498db',
+
     textDecoration: 'underline',
   },
-};
 
+  linkItem: {
+    cursor: 'pointer',
+    color: '#007BFF'
+}
+}
 export default Dashboard;
 
