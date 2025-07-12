@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
 
 
 const Dashboard = () => {
+    const navigate = useNavigate();
+
+  const goToBilling = () => {
+    navigate('/billing'); // ✅ This will route to BillingPage
+  };
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>Welcome to the Hospital Dashboard</h2>
@@ -13,7 +19,14 @@ const Dashboard = () => {
           <li>📅 Appointments</li>
           <li>💊 Pharmacy</li>
           <li>🧪 Lab Reports</li>
-          <li>💵 Billing</li>
+          <li
+            style={styles.clickable}
+            onClick={goToBilling}
+            title="Go to Billing Page"
+          >
+            💵 Billing
+          </li>
+
         </ul>
       </div>
     </div>
@@ -50,6 +63,11 @@ const styles = {
     fontSize: '16px',
     lineHeight: '2',
     color: '#333',
+  },
+  clickable: {
+    cursor: 'pointer',
+    color: '#007bff',
+    fontWeight: 'bold',
   },
 };
 
