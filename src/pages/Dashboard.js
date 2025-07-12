@@ -1,7 +1,13 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  const handlePatientsClick = () => {
+    navigate('/patients');
+  };
+
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>Welcome to the Hospital Dashboard</h2>
@@ -9,7 +15,7 @@ const Dashboard = () => {
 
       <div style={styles.card}>
         <ul style={styles.list}>
-          <li>🧑‍⚕️ Patients</li>
+          <li onClick={handlePatientsClick} style={styles.linkItem}>🧑‍⚕️ Patients</li>
           <li>📅 Appointments</li>
           <li>💊 Pharmacy</li>
           <li>🧪 Lab Reports</li>
@@ -51,6 +57,12 @@ const styles = {
     lineHeight: '2',
     color: '#333',
   },
+  linkItem: {
+    cursor: 'pointer',
+    color: '#007BFF',
+    textDecoration: 'underline',
+  },
 };
 
 export default Dashboard;
+
