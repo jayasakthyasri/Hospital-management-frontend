@@ -85,13 +85,13 @@ const styles = {
    clickable: {
     cursor: 'pointer',
     color: '#3498db',
-    fontWeight: 'bold',
-    textDecoration: 'underline',
+  
+    
   },
 
   linkItem: {
     cursor: 'pointer',
-    color: '#007BFF'
+    color: '#3498db'
 }
 }
 export default Dashboard;
