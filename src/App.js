@@ -1,17 +1,20 @@
 
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 
-import PatientPage from './pages/PatientPage'; // Import it
+import PatientPage from './pages/PatientPage';
+import AppointmentPage from './pages/AppointmentPage';
+import BillingPage from './pages/BillingPage';
 
-import AppointmentPage from './pages/AppointmentPage'; 
-import BillingPage from './pages/BillingPage';// ✅ import it
+import PharmacyPage from './pages/PharmacyPage';
+import LabPage from './pages/LabPage';
 
-
-
+import './App.css';
 
 function App() {
   return (
@@ -20,17 +23,18 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
-
-        <Route path="/patients" element={<PatientPage />} /> 
-        <Route path="/appointments" element={<AppointmentPage />} /> 
-
-
+        
+        {/* Friends' Pages */}
+        <Route path="/patients" element={<PatientPage />} />
+        <Route path="/appointments" element={<AppointmentPage />} />
         <Route path="/billing" element={<BillingPage />} />
 
+        {/* Your Pages */}
+        <Route path="/pharmacy" element={<PharmacyPage />} />
+        <Route path="/lab" element={<LabPage />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-        
