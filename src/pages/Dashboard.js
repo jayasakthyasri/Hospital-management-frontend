@@ -1,22 +1,28 @@
 import React from 'react';
-
+import Sidebar from '../components/Sidebar';
+import Navbar from '../components/Navbar'; // ✅ Add this
 
 const Dashboard = () => {
   return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>Welcome to the Hospital Dashboard</h2>
-      <p style={styles.subtitle}>Select a module to manage:</p>
-
-      <div style={styles.card}>
-        <ul style={styles.list}>
-          <li>🧑‍⚕️ Patients</li>
-          <li>📅 Appointments</li>
-          <li>💊 Pharmacy</li>
-          <li>🧪 Lab Reports</li>
-          <li>💵 Billing</li>
-        </ul>
+    <>
+      <Navbar /> {/* ✅ Top navbar */}
+      <div style={{ display: 'flex' }}>
+        <Sidebar />
+        <div style={styles.container}>
+          <h2 style={styles.title}>Welcome to the Hospital Dashboard</h2>
+          <p style={styles.subtitle}>Select a module to manage:</p>
+          <div style={styles.card}>
+            <ul style={styles.list}>
+              <li>🧑‍⚕️ Patients</li>
+              <li>📅 Appointments</li>
+              <li>💊 Pharmacy</li>
+              <li>🧪 Lab Reports</li>
+              <li>💵 Billing</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -26,6 +32,7 @@ const styles = {
     backgroundColor: '#f4f6f8',
     minHeight: '100vh',
     textAlign: 'center',
+    flex: 1,
   },
   title: {
     fontSize: '28px',

@@ -1,0 +1,26 @@
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #5548C8; /* Dark Violet */
+  color: #FFFFFF;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  color: #FFFFFF;
+}
+
+.sidebar-link {
+  display: block;
+  color: #FFFFFF;            /* Sidebar text white */
+  text-decoration: none;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.sidebar-link:hover {
+  background-color: #A69CFF; /* Light Violet on hover */
+}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
 import Dashboard from './Dashboard';
+// eslint-disable-next-line no-unused-vars
 import Login from './Login';
 import { Link } from 'react-router-dom';
 
