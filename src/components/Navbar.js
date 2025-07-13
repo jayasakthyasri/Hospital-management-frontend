@@ -1,11 +1,12 @@
 import React from 'react';
-import './Navbar.css'; // Optional styling
+import './Navbar.css';
 
-export default function Navbar() {
+const Navbar = () => {
   return (
     <div className="navbar">
-      <h3>Hospital Management System</h3>
-      {/* You can add buttons or user info here */}
+      <span className="navbar-title">Hospital Management System</span>
     </div>
   );
-}
+};
+
+export default Navbar;
