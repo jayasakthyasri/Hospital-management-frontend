@@ -1,18 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-
-  const handlePatientsClick = () => {
-    navigate('/patients');
-  };
-
-  const goToBilling = () => {
-    navigate('/billing');
-  };
 
   return (
     <>
@@ -20,15 +12,16 @@ const Dashboard = () => {
       <div style={{ display: 'flex' }}>
         <Sidebar />
         <div style={styles.container}>
-          <h2 style={styles.title}>Welcome to the Hospital Dashboard</h2>
-          <p style={styles.subtitle}>Select a module to manage:</p>
+          <h2 style={styles.title}>🏥 Welcome to the Hospital Management System</h2>
+          <p style={styles.subtitle}>Choose a module to manage</p>
+
           <div style={styles.card}>
-            <ul style={styles.list}>
-              <li onClick={handlePatientsClick} style={styles.linkItem}>🧑‍⚕️ Patients</li>
-              <li onClick={() => navigate('/appointments')} style={styles.linkItem}>📅 Appointments</li>
-              <li onClick={() => navigate('/pharmacy')} style={styles.linkItem}>💊 Pharmacy</li>
-              <li onClick={() => navigate('/lab')} style={styles.linkItem}>🧪 Lab Reports</li>
-              <li onClick={goToBilling} style={styles.linkItem}>💵 Billing</li>
+            <ul style={styles.menu}>
+              <li style={styles.item} onClick={() => navigate('/patients')}>🧑‍⚕️ Patients</li>
+              <li style={styles.item} onClick={() => navigate('/appointments')}>📅 Appointments</li>
+              <li style={styles.item} onClick={() => navigate('/pharmacy')}>💊 Pharmacy</li>
+              <li style={styles.item} onClick={() => navigate('/lab')}>🧪 Lab</li>
+              <li style={styles.item} onClick={() => navigate('/billing')}>💵 Billing</li>
             </ul>
           </div>
         </div>
@@ -39,39 +32,42 @@ const Dashboard = () => {
 
 const styles = {
   container: {
-    padding: '2rem',
-    backgroundColor: '#f4f6f8',
+    flex: 1,
+    padding: '50px 30px',
+    backgroundColor: '#e6f2ff',
     minHeight: '100vh',
     textAlign: 'center',
-    flex: 1,
   },
   title: {
-    fontSize: '28px',
-    color: '#2c3e50',
+    fontSize: '32px',
+    color: '#003366',
+    marginBottom: '10px',
+    fontFamily: 'Libertinus Mono, sans-serif',
+    textShadow: '1px 1px 2px #b3d9ff',
   },
   subtitle: {
     fontSize: '18px',
     color: '#555',
-    marginBottom: '1rem',
+    marginBottom: '30px',
   },
   card: {
     maxWidth: '500px',
     margin: '0 auto',
-    padding: '1.5rem',
-    backgroundColor: '#fff',
-    borderRadius: '10px',
-    boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
+    padding: '25px',
+    backgroundColor: '#ffffff',
+    borderRadius: '12px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
   },
-  list: {
+  menu: {
     listStyle: 'none',
     padding: 0,
-    fontSize: '16px',
-    lineHeight: '2',
-    color: '#333',
+    fontSize: '18px',
+    lineHeight: '2.5',
   },
-  linkItem: {
+  item: {
     cursor: 'pointer',
-    color: '#3498db',
+    color: '#0077cc',
+    transition: 'color 0.3s',
   },
 };
 
