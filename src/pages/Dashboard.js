@@ -1,19 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-
-  const handlePatientsClick = () => {
-    navigate('/patients');
-  };
-
-  const goToBilling = () => {
-    navigate('/billing');
-  };
-
   return (
     <>
       <Navbar />
@@ -24,11 +13,11 @@ const Dashboard = () => {
           <p style={styles.subtitle}>Select a module to manage:</p>
           <div style={styles.card}>
             <ul style={styles.list}>
-              <li onClick={handlePatientsClick} style={styles.linkItem}>🧑‍⚕️ Patients</li>
-              <li onClick={() => navigate('/appointments')} style={styles.linkItem}>📅 Appointments</li>
-              <li onClick={() => navigate('/pharmacy')} style={styles.linkItem}>💊 Pharmacy</li>
-              <li onClick={() => navigate('/lab')} style={styles.linkItem}>🧪 Lab Reports</li>
-              <li onClick={goToBilling} style={styles.linkItem}>💵 Billing</li>
+              <li style={styles.clickable}>🧑 Patients</li>
+              <li style={styles.clickable}>📅 Appointments</li>
+              <li style={styles.clickable}>💊 Pharmacy</li>
+              <li style={styles.clickable}>🧪 Lab Reports</li>
+              <li style={styles.clickable}>💵 Billing</li>
             </ul>
           </div>
         </div>
@@ -39,40 +28,43 @@ const Dashboard = () => {
 
 const styles = {
   container: {
-    padding: '2rem',
-    backgroundColor: '#f4f6f8',
+    paddingTop: '80px',
+    paddingLeft: '50px',
+    backgroundColor: '#e6f2ff', // light blue
     minHeight: '100vh',
-    textAlign: 'center',
     flex: 1,
+    textAlign: 'center',
   },
   title: {
-    fontSize: '28px',
-    color: '#2c3e50',
+    fontSize: '30px',
+    color: '#004080',
+    marginBottom: '10px',
+    textShadow: '1px 1px 2px #ccc',
   },
   subtitle: {
     fontSize: '18px',
     color: '#555',
-    marginBottom: '1rem',
+    marginBottom: '30px',
   },
   card: {
     maxWidth: '500px',
     margin: '0 auto',
     padding: '1.5rem',
     backgroundColor: '#fff',
-    borderRadius: '10px',
-    boxShadow: '0 0 8px rgba(0, 0, 0, 0.1)',
+    borderRadius: '12px',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
   },
   list: {
     listStyle: 'none',
     padding: 0,
-    fontSize: '16px',
-    lineHeight: '2',
-    color: '#333',
+    fontSize: '17px',
+    lineHeight: '2.5',
   },
-  linkItem: {
+  clickable: {
     cursor: 'pointer',
-    color: '#3498db',
-  },
+    color: '#0066cc',
+    fontWeight: '500',
+  }
 };
 
 export default Dashboard;

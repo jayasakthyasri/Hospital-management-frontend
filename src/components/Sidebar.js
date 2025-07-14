@@ -1,31 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Sidebar.css'; // Create this if you want to style the sidebar
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
 
-export default function Sidebar() {
+const Sidebar = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="sidebar">
-      <h2>Hospital Admin</h2>
-      <ul>
-        <li>
-          <Link to="/dashboard" className="sidebar-link">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/patients" className="sidebar-link">Patients</Link>
-        </li>
-        <li>
-          <Link to="/appointments" className="sidebar-link">Appointments</Link>
-        </li>
-        <li>
-          <Link to="/doctors" className="sidebar-link">Doctors</Link>
-        </li>
-        <li>
-          <Link to="/billing" className="sidebar-link">Billing</Link>
-        </li>
-        <li>
-          <Link to="/" className="sidebar-link">Logout</Link>
-        </li>
+      <h2 className="sidebar-title">Hospital Admin</h2>
+      <ul className="sidebar-menu">
+        <li onClick={() => navigate('/dashboard')}>🏠 Dashboard</li>
+        <li onClick={() => navigate('/patients')}>🧑‍⚕️ Patients</li>
+        <li onClick={() => navigate('/appointments')}>📅 Appointments</li>
+        <li onClick={() => navigate('/pharmacy')}>💊 Pharmacy</li>
+        <li onClick={() => navigate('/lab')}>🧪 Lab</li>
+        <li onClick={() => navigate('/billing')}>💵 Billing</li>
+        <li onClick={() => navigate('/')}>🚪 Logout</li>
       </ul>
     </div>
   );
-}
+};
+
+export default Sidebar;

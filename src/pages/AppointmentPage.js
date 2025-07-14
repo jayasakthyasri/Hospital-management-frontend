@@ -56,53 +56,164 @@ const AppointmentPage = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Schedule New Appointment</h2>
-      <form onSubmit={handleSubmit} style={{ marginBottom: '30px' }}>
-        <input name="patientName" placeholder="Patient Name" value={newAppointment.patientName} onChange={handleChange} required />
-        <input name="date" type="date" value={newAppointment.date} onChange={handleChange} required />
-        <input name="time" type="time" value={newAppointment.time} onChange={handleChange} required />
-        <input name="reason" placeholder="Reason" value={newAppointment.reason} onChange={handleChange} required />
-        <select name="status" value={newAppointment.status} onChange={handleChange} required>
+    <div style={styles.page}>
+      <h2 style={styles.heading}>📅 Schedule New Appointment</h2>
+
+      <form onSubmit={handleSubmit} style={styles.form}>
+        <input
+          name="patientName"
+          placeholder="Patient Name"
+          value={newAppointment.patientName}
+          onChange={handleChange}
+          required
+          style={styles.input}
+        />
+        <input
+          name="date"
+          type="date"
+          value={newAppointment.date}
+          onChange={handleChange}
+          required
+          style={styles.input}
+        />
+        <input
+          name="time"
+          type="time"
+          value={newAppointment.time}
+          onChange={handleChange}
+          required
+          style={styles.input}
+        />
+        <input
+          name="reason"
+          placeholder="Reason"
+          value={newAppointment.reason}
+          onChange={handleChange}
+          required
+          style={styles.input}
+        />
+        <select
+          name="status"
+          value={newAppointment.status}
+          onChange={handleChange}
+          required
+          style={styles.select}
+        >
           <option value="">Select Status</option>
           <option value="Confirmed">Confirmed</option>
           <option value="Pending">Pending</option>
           <option value="Cancelled">Cancelled</option>
         </select>
-        <input name="doctor" placeholder="Doctor Name" value={newAppointment.doctor} onChange={handleChange} required />
-        <button type="submit">Add Appointment</button>
+        <input
+          name="doctor"
+          placeholder="Doctor Name"
+          value={newAppointment.doctor}
+          onChange={handleChange}
+          required
+          style={styles.input}
+        />
+        <button type="submit" style={styles.button}>
+          Add Appointment
+        </button>
       </form>
 
-      <h2>Scheduled Appointments</h2>
-      <table border="1" cellPadding="10" cellSpacing="0" style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead style={{ backgroundColor: '#f2f2f2' }}>
-          <tr>
-            <th>ID</th>
-            <th>Patient Name</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Reason</th>
-            <th>Status</th>
-            <th>Doctor</th>
-          </tr>
-        </thead>
-        <tbody>
-          {appointments.map(appt => (
-            <tr key={appt.id}>
-              <td>{appt.id}</td>
-              <td>{appt.patientName}</td>
-              <td>{appt.date}</td>
-              <td>{appt.time}</td>
-              <td>{appt.reason}</td>
-              <td>{appt.status}</td>
-              <td>{appt.doctor}</td>
+      <div style={styles.card}>
+        <h3 style={{ color: '#003366' }}>📋 Scheduled Appointments</h3>
+        <table style={styles.table}>
+          <thead>
+            <tr>
+              <th style={styles.th}>ID</th>
+              <th style={styles.th}>Patient Name</th>
+              <th style={styles.th}>Date</th>
+              <th style={styles.th}>Time</th>
+              <th style={styles.th}>Reason</th>
+              <th style={styles.th}>Status</th>
+              <th style={styles.th}>Doctor</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {appointments.map((appt) => (
+              <tr key={appt.id}>
+                <td style={styles.td}>{appt.id}</td>
+                <td style={styles.td}>{appt.patientName}</td>
+                <td style={styles.td}>{appt.date}</td>
+                <td style={styles.td}>{appt.time}</td>
+                <td style={styles.td}>{appt.reason}</td>
+                <td style={styles.td}>{appt.status}</td>
+                <td style={styles.td}>{appt.doctor}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
-export default AppointmentPage;
+const styles = {
+  page: {
+    marginLeft: '220px',
+    padding: '40px',
+    minHeight: '100vh',
+    backgroundColor: '#e6f2ff',
+    fontFamily: '"Libertinus Mono", monospace',
+  },
+  heading: {
+    fontSize: '28px',
+    marginBottom: '20px',
+    color: '#003366',
+    textShadow: '1px 1px 2px #b3d9ff',
+  },
+  form: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '10px',
+    marginBottom: '25px',
+  },
+  input: {
+    padding: '10px',
+    flex: '1 1 220px',
+    borderRadius: '8px',
+    border: '1px solid #ccc',
+    fontSize: '16px',
+  },
+  select: {
+    padding: '10px',
+    borderRadius: '8px',
+    border: '1px solid #ccc',
+    fontSize: '16px',
+    flex: '1 1 220px',
+  },
+  button: {
+    padding: '10px 20px',
+    backgroundColor: '#0077b6',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '6px',
+    fontWeight: 'bold',
+    cursor: 'pointer',
+  },
+  card: {
+    backgroundColor: '#ffffff',
+    padding: '20px',
+    borderRadius: '12px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+  },
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse',
+    marginTop: '15px',
+  },
+  th: {
+    backgroundColor: '#0077b6',
+    color: '#fff',
+    padding: '12px',
+    textAlign: 'left',
+  },
+  td: {
+    padding: '12px',
+    borderBottom: '1px solid #eee',
+  },
+};
 
+export default AppointmentPage;

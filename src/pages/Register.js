@@ -1,120 +1,136 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-// eslint-disable-next-line no-unused-vars
-import Dashboard from './Dashboard';
-// eslint-disable-next-line no-unused-vars
-import Login from './Login';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-const RegisterPage = () => {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [role, setRole] = useState('patient');
-  const [password, setPassword] = useState('');
-
-
-  const navigate=useNavigate();
-
+export default function Register() {
+  const [username, setusername] = useState('');
+  const [password, setpassword] = useState('');
+  const [email, setemail] = useState('');
+  const [role, setrole] = useState('admin');
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
-    alert(`Registration successfull`);
-
-    navigate('/dashboard')
+    alert('Registration successful!');
+    navigate('/');
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.heading}>Register</h2>
+        <h2 style={styles.heading}>Hospital Registration</h2>
+
         <form onSubmit={handleRegister}>
           <input
             type="text"
-            placeholder="Full Name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setusername(e.target.value)}
             required
             style={styles.input}
           />
+
           <input
             type="email"
-            placeholder="Email Address"
+            placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setemail(e.target.value)}
             required
             style={styles.input}
           />
+
           <input
             type="password"
-            placeholder="Create Password"
+            placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setpassword(e.target.value)}
             required
             style={styles.input}
           />
+
           <select
             value={role}
-            onChange={(e) => setRole(e.target.value)}
+            onChange={(e) => setrole(e.target.value)}
             style={styles.select}
           >
-            <option value="patient">Patient</option>
+            <option value="admin">Admin</option>
             <option value="doctor">Doctor</option>
             <option value="receptionist">Receptionist</option>
-            <option value="admin">Admin</option>
+            <option value="patient">Patient</option>
           </select>
-          <button type="submit" style={styles.button}>Register</button>
+
+          <button type="submit" style={styles.button}>
+            Register
+          </button>
         </form>
 
-        <p>Already registered? <Link to="/">Login now</Link></p>
+        <p style={styles.linkText}>
+          Already have an account?{' '}
+          <Link to="/" style={styles.link}>Login</Link>
+        </p>
       </div>
     </div>
   );
-};
+}
 
+// 💙 Blue theme and font matching Pharmacy & Login
 const styles = {
   container: {
     height: '100vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: '#f9f9f9',
+    background: '#e6f2ff',
+    fontFamily: '"Libertinus Mono", monospace',
   },
   card: {
-    background: '#fff',
-    padding: '2rem',
-    borderRadius: '10px',
-    boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-    width: '320px',
+    background: '#ffffff',
+    padding: '2.5rem',
+    borderRadius: '12px',
+    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)',
+    width: '350px',
     textAlign: 'center',
   },
   heading: {
-    marginBottom: '1.5rem',
-    color: '#333',
+    marginBottom: '1.8rem',
+    fontSize: '24px',
+    color: '#003366',
+    fontWeight: 'bold',
+    textShadow: '1px 1px 2px #b3d9ff',
   },
   input: {
     width: '100%',
-    padding: '10px',
+    padding: '12px',
     marginBottom: '1rem',
-    borderRadius: '5px',
+    borderRadius: '6px',
     border: '1px solid #ccc',
+    fontSize: '14px',
   },
   select: {
     width: '100%',
-    padding: '10px',
+    padding: '12px',
     marginBottom: '1rem',
-    borderRadius: '5px',
+    borderRadius: '6px',
     border: '1px solid #ccc',
+    fontSize: '14px',
   },
   button: {
     width: '100%',
-    padding: '10px',
-    background: 'purple',
+    padding: '12px',
+    background: '#0077b6',
     color: '#fff',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: '6px',
+    fontSize: '16px',
     cursor: 'pointer',
   },
+  linkText: {
+    marginTop: '1rem',
+    fontSize: '14px',
+    color: '#444',
+  },
+  link: {
+    color: '#0077b6',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+  },
 };
-
-export default RegisterPage;
-

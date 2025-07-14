@@ -1,8 +1,15 @@
 .navbar {
-  background-color: #6C63FF; /* Deep Violet */
-  color: #FFFFFF;            /* White Text */
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #004080;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  font-family: 'Quicksand', monospace;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-title {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
