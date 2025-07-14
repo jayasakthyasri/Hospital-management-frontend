@@ -1,5 +1,3 @@
-// src/pages/BillingPage.js
-
 import React, { useState } from "react";
 
 const BillingPage = () => {
@@ -18,6 +16,8 @@ const BillingPage = () => {
     },
   ]);
 
+  const [nextId, setNextId] = useState(3); // Start from 3 since 1 and 2 already exist
+
   const [formData, setFormData] = useState({
     patientName: "",
     service: "",
@@ -34,19 +34,19 @@ const BillingPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newEntry = {
-      id: Date.now(),
+      id: nextId,
       ...formData,
       amount: parseFloat(formData.amount),
     };
     setBillingData((prev) => [...prev, newEntry]);
+    setNextId((prev) => prev + 1); // Increment ID for next entry
     setFormData({ patientName: "", service: "", amount: "" });
   };
 
   return (
-    <div style={styles.container}>
-      <h2>Billing Page</h2>
+    <div style={styles.page}>
+      <h2 style={styles.heading}>💳 Billing Management</h2>
 
-      {/* Billing Info Form */}
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
           type="text"
@@ -75,72 +75,92 @@ const BillingPage = () => {
           required
           style={styles.input}
         />
-        <button type="submit" style={styles.button}>
-          Add Billing Info
-        </button>
+        <button type="submit" style={styles.button}>Add Billing Info</button>
       </form>
 
-      {/* Dummy Billing Table */}
-      <h3>Billing Records</h3>
-      <table style={styles.table}>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Patient Name</th>
-            <th>Service</th>
-            <th>Amount (₹)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {billingData.map((bill) => (
-            <tr key={bill.id}>
-              <td>{bill.id}</td>
-              <td>{bill.patientName}</td>
-              <td>{bill.service}</td>
-              <td>{bill.amount}</td>
+      <div style={styles.card}>
+        <h3 style={{ color: '#003366' }}>Billing Records</h3>
+        <table style={styles.table}>
+          <thead>
+            <tr>
+              <th style={styles.th}>ID</th>
+              <th style={styles.th}>Patient Name</th>
+              <th style={styles.th}>Service</th>
+              <th style={styles.th}>Amount (₹)</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {billingData.map((bill) => (
+              <tr key={bill.id}>
+                <td style={styles.td}>{bill.id}</td>
+                <td style={styles.td}>{bill.patientName}</td>
+                <td style={styles.td}>{bill.service}</td>
+                <td style={styles.td}>{bill.amount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
 const styles = {
-  container: {
-    padding: "30px",
-    fontFamily: "Arial, sans-serif",
+  page: {
+    marginLeft: "220px",
+    padding: "40px",
+    minHeight: "100vh",
+    backgroundColor: "#e6f2ff",
+    fontFamily: '"Libertinus Mono", monospace',
+  },
+  heading: {
+    fontSize: "28px",
+    marginBottom: "20px",
+    color: "#003366",
+    textShadow: "1px 1px 2px #b3d9ff",
   },
   form: {
     display: "flex",
-    gap: "10px",
     flexWrap: "wrap",
-    marginBottom: "20px",
+    gap: "10px",
+    marginBottom: "25px",
   },
   input: {
     padding: "10px",
+    flex: "1 1 220px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
     fontSize: "16px",
-    flex: "1 1 200px",
   },
   button: {
     padding: "10px 20px",
-    backgroundColor: "#28a745",
+    backgroundColor: "#0077b6",
     color: "#fff",
     border: "none",
+    borderRadius: "6px",
+    fontWeight: "bold",
     cursor: "pointer",
+  },
+  card: {
+    backgroundColor: "#ffffff",
+    padding: "20px",
+    borderRadius: "12px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
   },
   table: {
     width: "100%",
     borderCollapse: "collapse",
+    marginTop: "15px",
   },
   th: {
-    borderBottom: "1px solid #ccc",
-    padding: "10px",
+    backgroundColor: "#0077b6",
+    color: "#fff",
+    padding: "12px",
     textAlign: "left",
   },
   td: {
+    padding: "12px",
     borderBottom: "1px solid #eee",
-    padding: "10px",
   },
 };
 
