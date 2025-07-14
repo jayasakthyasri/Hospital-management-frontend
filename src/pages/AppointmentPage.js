@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
 
 const AppointmentPage = () => {
   const [appointments, setAppointments] = useState([
@@ -10,18 +12,18 @@ const AppointmentPage = () => {
     { id: 6, patientName: "Laura White", date: "2025-07-20", time: "04:00 PM", reason: "Diabetes", status: "Pending", doctor: "Dr. Evans" },
     { id: 7, patientName: "David King", date: "2025-07-21", time: "10:30 AM", reason: "Blood Test", status: "Confirmed", doctor: "Dr. Carter" },
     { id: 8, patientName: "Emma Thomas", date: "2025-07-22", time: "02:30 PM", reason: "Skin Rash", status: "Confirmed", doctor: "Dr. Hughes" },
-    { id: 9, patientName: "Daniel Garcia", date: "2025-07-23", time: "12:00 PM", reason: "Migraine", status: "Cancelled", doctor: "Dr. Walker" },
-    { id: 10, patientName: "Sophia Martinez", date: "2025-07-24", time: "11:45 AM", reason: "Allergy", status: "Confirmed", doctor: "Dr. Young" },
-    { id: 11, patientName: "William Harris", date: "2025-07-25", time: "09:00 AM", reason: "Vaccination", status: "Pending", doctor: "Dr. Lee" },
-    { id: 12, patientName: "Olivia Clark", date: "2025-07-26", time: "01:15 PM", reason: "Cold", status: "Confirmed", doctor: "Dr. Baker" },
-    { id: 13, patientName: "James Lewis", date: "2025-07-27", time: "02:00 PM", reason: "Joint Pain", status: "Confirmed", doctor: "Dr. Murphy" },
-    { id: 14, patientName: "Mia Hall", date: "2025-07-28", time: "03:45 PM", reason: "X-Ray", status: "Pending", doctor: "Dr. Moore" },
-    { id: 15, patientName: "Benjamin Allen", date: "2025-07-29", time: "04:30 PM", reason: "Asthma", status: "Confirmed", doctor: "Dr. Rivera" },
-    { id: 16, patientName: "Charlotte Young", date: "2025-07-30", time: "10:15 AM", reason: "Throat Pain", status: "Confirmed", doctor: "Dr. Price" },
-    { id: 17, patientName: "Lucas Scott", date: "2025-07-31", time: "12:30 PM", reason: "Ear Checkup", status: "Cancelled", doctor: "Dr. Bell" },
-    { id: 18, patientName: "Amelia Turner", date: "2025-08-01", time: "01:45 PM", reason: "Ultrasound", status: "Pending", doctor: "Dr. Foster" },
-    { id: 19, patientName: "Henry Collins", date: "2025-08-02", time: "02:20 PM", reason: "CT Scan", status: "Confirmed", doctor: "Dr. Cox" },
-    { id: 20, patientName: "Evelyn Ramirez", date: "2025-08-03", time: "03:50 PM", reason: "Flu", status: "Confirmed", doctor: "Dr. Hayes" }
+   // { id: 9, patientName: "Daniel Garcia", date: "2025-07-23", time: "12:00 PM", reason: "Migraine", status: "Cancelled", doctor: "Dr. Walker" }
+  //   { id: 10, patientName: "Sophia Martinez", date: "2025-07-24", time: "11:45 AM", reason: "Allergy", status: "Confirmed", doctor: "Dr. Young" },
+  //   { id: 11, patientName: "William Harris", date: "2025-07-25", time: "09:00 AM", reason: "Vaccination", status: "Pending", doctor: "Dr. Lee" },
+  //   { id: 12, patientName: "Olivia Clark", date: "2025-07-26", time: "01:15 PM", reason: "Cold", status: "Confirmed", doctor: "Dr. Baker" },
+  //   { id: 13, patientName: "James Lewis", date: "2025-07-27", time: "02:00 PM", reason: "Joint Pain", status: "Confirmed", doctor: "Dr. Murphy" },
+  //   { id: 14, patientName: "Mia Hall", date: "2025-07-28", time: "03:45 PM", reason: "X-Ray", status: "Pending", doctor: "Dr. Moore" },
+  //   { id: 15, patientName: "Benjamin Allen", date: "2025-07-29", time: "04:30 PM", reason: "Asthma", status: "Confirmed", doctor: "Dr. Rivera" },
+  //   { id: 16, patientName: "Charlotte Young", date: "2025-07-30", time: "10:15 AM", reason: "Throat Pain", status: "Confirmed", doctor: "Dr. Price" },
+  //   { id: 17, patientName: "Lucas Scott", date: "2025-07-31", time: "12:30 PM", reason: "Ear Checkup", status: "Cancelled", doctor: "Dr. Bell" },
+  //   { id: 18, patientName: "Amelia Turner", date: "2025-08-01", time: "01:45 PM", reason: "Ultrasound", status: "Pending", doctor: "Dr. Foster" },
+  //   { id: 19, patientName: "Henry Collins", date: "2025-08-02", time: "02:20 PM", reason: "CT Scan", status: "Confirmed", doctor: "Dr. Cox" },
+  //   { id: 20, patientName: "Evelyn Ramirez", date: "2025-08-03", time: "03:50 PM", reason: "Flu", status: "Confirmed", doctor: "Dr. Hayes" }
   ]);
 
   const [newAppointment, setNewAppointment] = useState({
@@ -56,6 +58,10 @@ const AppointmentPage = () => {
   };
 
   return (
+   <>
+   <Navbar/>
+    <div style={{ display: 'flex' }}>
+      <Sidebar/>
     <div style={styles.page}>
       <h2 style={styles.heading}>📅 Schedule New Appointment</h2>
 
@@ -147,16 +153,22 @@ const AppointmentPage = () => {
         </table>
       </div>
     </div>
+    </div>
+
+    </>
+ 
+    
   );
 };
 
 const styles = {
   page: {
-    marginLeft: '220px',
+    
     padding: '40px',
-    minHeight: '100vh',
+    Height: '100vh',
     backgroundColor: '#e6f2ff',
     fontFamily: '"Libertinus Mono", monospace',
+    width:'100%'
   },
   heading: {
     fontSize: '28px',

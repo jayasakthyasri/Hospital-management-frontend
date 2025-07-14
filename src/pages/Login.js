@@ -1,22 +1,51 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Login() {
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
   const [role, setrole] = useState('admin');
   const navigate = useNavigate();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Login successful!');
-    navigate('/dashboard');
-  };
+  try {
+    const res = await axios.get('http://localhost:5000/users', {
+  params: {
+    username,
+    password
+  }
+});
+
+if (res.data.length > 0) {
+  const user = res.data[0];
+
+  if (user.role !== role) {
+    alert("Incorrect role selected!");
+    return;
+  }
+
+  alert("Login successful!");
+
+  if (role === "admin") navigate("/dashboard");
+  else if (role === "doctor") navigate("/pharmacy");
+  else if (role === "receptionist") navigate("/appointments");
+} else {
+  alert("Invalid username or password");
+}
+}
+
+  catch (error) {
+    console.error(error);
+    alert('Login failed');
+  }
+};
 
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.heading}>Hospital Management System</h2>
+        <h2 style={styles.heading}>Login to HexoSpital</h2>
 
         <form onSubmit={handleSubmit}>
           <input
@@ -45,12 +74,13 @@ export default function Login() {
             <option value="admin">Admin</option>
             <option value="doctor">Doctor</option>
             <option value="receptionist">Receptionist</option>
-            <option value="patient">Patient</option>
+            
           </select>
 
           <button type="submit" style={styles.button}>
             Login
           </button>
+
         </form>
 
         <p style={styles.linkText}>

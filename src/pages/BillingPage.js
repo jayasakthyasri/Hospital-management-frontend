@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 
 const BillingPage = () => {
   const [billingData, setBillingData] = useState([
@@ -44,6 +46,10 @@ const BillingPage = () => {
   };
 
   return (
+    <>
+    <Navbar/>
+     <div style={{ display: 'flex' }}>
+      <Sidebar/>
     <div style={styles.page}>
       <h2 style={styles.heading}>💳 Billing Management</h2>
 
@@ -102,14 +108,16 @@ const BillingPage = () => {
         </table>
       </div>
     </div>
+    </div>
+    </>
   );
 };
 
 const styles = {
   page: {
-    marginLeft: "220px",
+    width:"100%",
     padding: "40px",
-    minHeight: "100vh",
+    Height: "100vh",
     backgroundColor: "#e6f2ff",
     fontFamily: '"Libertinus Mono", monospace',
   },

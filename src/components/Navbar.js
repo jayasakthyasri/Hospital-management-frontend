@@ -4,7 +4,8 @@ import './Navbar.css';
 const Navbar = () => {
   return (
     <div className="navbar">
-      <h1 className="navbar-title">Hospital Management System</h1>
+      
+      <h1 className="navbar-title">HexoSpital</h1>
     </div>
   );
 };

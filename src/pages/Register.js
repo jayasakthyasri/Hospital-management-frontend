@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Register() {
   const [username, setusername] = useState('');
@@ -8,10 +9,30 @@ export default function Register() {
   const [role, setrole] = useState('admin');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+   const handleRegister = async (e) => {
     e.preventDefault();
+
+    // check if user already exists
+    const existingUser = await axios.get(`http://localhost:5000/users`, {
+      params: { username }
+    });
+
+    if (existingUser.data.length > 0) {
+      alert('Username already taken');
+      return;
+    }
+
+    await axios.post('http://localhost:5000/users', {
+      username,
+      password,
+      email,
+      role
+    });
+
     alert('Registration successful!');
-    navigate('/');
+    if (role === "admin") navigate("/dashboard");
+  else if (role === "doctor") navigate("/dashboard/pharmacy");
+  else if (role === "receptionist") navigate("/dashboard/appointments");
   };
 
   return (
@@ -50,12 +71,12 @@ export default function Register() {
           <select
             value={role}
             onChange={(e) => setrole(e.target.value)}
-            style={styles.select}
-          >
+            style={styles.select}>
+
             <option value="admin">Admin</option>
             <option value="doctor">Doctor</option>
             <option value="receptionist">Receptionist</option>
-            <option value="patient">Patient</option>
+           
           </select>
 
           <button type="submit" style={styles.button}>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import Sidebar from '../components/Sidebar';
+import Navbar from '../components/Navbar';
 
 const LabPage = () => {
   const [patients, setPatients] = useState([]);
   const [labReports, setLabReports] = useState([]);
-  const [editingId, setEditingId] = useState(null);
+  
 
   useEffect(() => {
     const storedPatients = JSON.parse(localStorage.getItem('patients') || '[]');
@@ -25,6 +27,10 @@ const LabPage = () => {
   };
 
   return (
+    <>
+    <Navbar/>
+     <div style={{ display: 'flex' }}>
+      <Sidebar/>
     <div style={styles.page}>
       <h2 style={styles.title}>🧪 Lab Reports</h2>
 
@@ -64,11 +70,13 @@ const LabPage = () => {
         </tbody>
       </table>
     </div>
+    </div>
+    </>
   );
 };
 
 const styles = {
-  page: { marginLeft: '220px', padding: '40px', minHeight: '100vh', backgroundColor: '#e6f2ff', fontFamily: 'Libertinus Mono, sans-serif' },
+  page: { width:'100%', padding: '40px', Height: '100vh', backgroundColor: '#e6f2ff', fontFamily: 'Libertinus Mono, sans-serif' },
   title: { fontSize: '28px', marginBottom: '20px', color: '#003366', textShadow: '1px 1px 2px #b3d9ff' },
   table: { width: '100%', borderCollapse: 'collapse', backgroundColor: '#fff' },
   th: { backgroundColor: '#0096c7', color: '#fff', padding: '12px', textAlign: 'left' },

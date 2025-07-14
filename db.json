@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": "9f56",
+      "username": "Jaya",
+      "password": "jaysak",
+      "role": "admin"
+    },
+    {
+      "id": "9625",
+      "username": "jays",
+      "password": "Jya",
+      "role": "doctor"
+    },
+    {
+      "id": "3969",
+      "username": "jalak",
+      "password": "jalak",
+      "email": "jalak99@gmail.com",
+      "role": "doctor"
+    }
+  ]
+}

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Sidebar from '../components/Sidebar';
+import Navbar from '../components/Navbar';
 
 const PatientPage = () => {
   const [patients, setPatients] = useState([]);
@@ -48,7 +50,12 @@ const PatientPage = () => {
   };
 
   return (
+    <>
+    <Navbar />
+    <div style={{ display: 'flex' }}>
+    <Sidebar/>
     <div style={styles.container}>
+      
       <form onSubmit={handleSubmit} style={styles.form}>
         <h2 style={styles.heading}>{editIndex !== null ? 'Edit Patient' : 'Add Patient'}</h2>
         <input name="name" placeholder="Name" value={formData.name} onChange={handleChange} required style={styles.input} />
@@ -74,11 +81,13 @@ const PatientPage = () => {
         ))}
       </div>
     </div>
+    </div>
+    </>
   );
 };
 
 const styles = {
-  container: { padding: '40px', backgroundColor: '#e6f2ff', minHeight: '100vh' },
+  container: { padding: '40px', backgroundColor: '#e6f2ff', Height: '100vh',width:'100%' },
   form: { backgroundColor: '#fff', padding: '20px', borderRadius: '10px', maxWidth: '500px', margin: 'auto' },
   input: { width: '100%', padding: '10px', margin: '10px 0', borderRadius: '5px', border: '1px solid #ccc' },
   button: { width: '100%', padding: '10px', backgroundColor: '#0077b6', color: 'white', border: 'none', borderRadius: '5px', fontWeight: 'bold' },

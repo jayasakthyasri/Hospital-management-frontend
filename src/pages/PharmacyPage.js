@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Sidebar from '../components/Sidebar';
+import Navbar from '../components/Navbar';
 
 const PharmacyPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,6 +18,12 @@ const PharmacyPage = () => {
   );
 
   return (
+    <>
+    <Navbar/>
+     <div style={{ display: 'flex' }}>
+      <Sidebar/>
+    
+
     <div style={styles.page}>
       <h2 style={styles.title}>💊 Pharmacy Inventory</h2>
       <input
@@ -53,14 +61,16 @@ const PharmacyPage = () => {
         </table>
       </div>
     </div>
+    </div>
+   </>
   );
 };
 
 const styles = {
   page: {
-    marginLeft: '220px',
+    width:'100%',
     padding: '40px',
-    minHeight: '100vh',
+    Height: '100vh',
     backgroundColor: '#e6f2ff',
     fontFamily: 'Libertinus Mono, sans-serif',
   },

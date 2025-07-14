@@ -7,7 +7,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <h2 className="sidebar-title">Hospital Admin</h2>
+      <h2 className="sidebar-title">AdminDashboard</h2>
       <ul className="sidebar-menu">
         <li onClick={() => navigate('/dashboard')}>🏠 Dashboard</li>
         <li onClick={() => navigate('/patients')}>🧑‍⚕️ Patients</li>
