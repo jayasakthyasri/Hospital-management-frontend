@@ -20,7 +20,7 @@ const Dashboard = () => {
       <div style={{ display: 'flex' }}>
         <Sidebar />
         <div style={styles.container}>
-          <h2 style={styles.title}>Welcome to the Hospital Dashboard</h2>
+          <h2 style={styles.title}>Welcome to the HEXOSPITAL</h2>
           <p style={styles.subtitle}>Select a module to manage:</p>
           <div style={styles.card}>
             <ul style={styles.list}>
