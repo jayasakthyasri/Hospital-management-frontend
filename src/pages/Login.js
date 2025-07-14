@@ -1,34 +1,24 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-// eslint-disable-next-line no-unused-vars
-import Dashboard from './Dashboard';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Login() {
+  const [username, setusername] = useState('');
+  const [password, setpassword] = useState('');
+  const [role, setrole] = useState('admin');
+  const navigate = useNavigate();
 
-    const [username, setusername] = useState('');
-    const [password, setpassword] = useState('');
-    const [role,setrole] = useState('admin');
-
-    const navigate = useNavigate();
-
-    const handleSubmit=(e)=>{
-      e.preventDefault();
-      alert(`Login successfull!`)
-      
-      navigate('/dashboard')
-      
-    }
-
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Login successful!');
+    navigate('/dashboard');
+  };
 
   return (
-     <div style={styles.container}>
+    <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.heading}>Hospital Login</h2>
+        <h2 style={styles.heading}>Hospital Management System</h2>
 
         <form onSubmit={handleSubmit}>
-          {/* Username */}
           <input
             type="text"
             placeholder="Username"
@@ -38,7 +28,6 @@ export default function Login() {
             style={styles.input}
           />
 
-          {/* Password */}
           <input
             type="password"
             placeholder="Password"
@@ -48,7 +37,6 @@ export default function Login() {
             style={styles.input}
           />
 
-          {/* Role Dropdown */}
           <select
             value={role}
             onChange={(e) => setrole(e.target.value)}
@@ -60,62 +48,79 @@ export default function Login() {
             <option value="patient">Patient</option>
           </select>
 
-          {/* Submit Button */}
           <button type="submit" style={styles.button}>
             Login
           </button>
         </form>
 
-        <p> Dont have an account? <Link to="/register">Register now!</Link></p>
-
+        <p style={styles.linkText}>
+          Don’t have an account?{' '}
+          <Link to="/register" style={styles.link}>Register</Link>
+        </p>
       </div>
     </div>
   );
-};
+}
 
-// ✨ Styling (Inline Style Object)
+// 💙 Blue theme with Libertinus Mono
 const styles = {
   container: {
     height: '100vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: '#f2f2f2',
+    background: '#e6f2ff',
+    fontFamily: '"Libertinus Mono", monospace',
   },
   card: {
-    background: '#fff',
-    padding: '2rem',
-    borderRadius: '10px',
-    boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-    width: '300px',
+    background: '#ffffff',
+    padding: '2.5rem',
+    borderRadius: '12px',
+    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)',
+    width: '350px',
     textAlign: 'center',
   },
   heading: {
-    marginBottom: '1.5rem',
-    color: '#333',
+    marginBottom: '1.8rem',
+    fontSize: '24px',
+    color: '#003366',
+    fontWeight: 'bold',
+    textShadow: '1px 1px 2px #b3d9ff',
   },
   input: {
     width: '100%',
-    padding: '10px',
+    padding: '12px',
     marginBottom: '1rem',
-    borderRadius: '5px',
+    borderRadius: '6px',
     border: '1px solid #ccc',
+    fontSize: '14px',
   },
   select: {
     width: '100%',
-    padding: '10px',
+    padding: '12px',
     marginBottom: '1rem',
-    borderRadius: '5px',
+    borderRadius: '6px',
     border: '1px solid #ccc',
+    fontSize: '14px',
   },
   button: {
     width: '100%',
-    padding: '10px',
-    background: 'purple',
+    padding: '12px',
+    background: '#0077b6',
     color: '#fff',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: '6px',
+    fontSize: '16px',
     cursor: 'pointer',
   },
+  linkText: {
+    marginTop: '1rem',
+    fontSize: '14px',
+    color: '#444',
+  },
+  link: {
+    color: '#0077b6',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+  },
 };
-
