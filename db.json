@@ -18,6 +18,13 @@
       "password": "jalak",
       "email": "jalak99@gmail.com",
       "role": "doctor"
+    },
+    {
+      "id": "5aad",
+      "username": "shigee",
+      "password": "1234567890",
+      "email": "shigee@gmail.com",
+      "role": "admin"
     }
   ]
 }
